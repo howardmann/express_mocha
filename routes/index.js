@@ -3,6 +3,7 @@ var router = express.Router();
 
 var users = require('./users.js');
 var posts = require('./posts.js');
+var movies = require('./movies.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -28,10 +29,17 @@ router
   .delete('/posts/:id', posts.destroy);
 
 // USER NESTED ROUTES
-  router
-    .get('/users/:id/posts/new', posts.newUser)
-    .post('/users/:id/posts', posts.createUser);
+router
+  .get('/users/:id/posts/new', posts.newUser)
+  .post('/users/:id/posts', posts.createUser);
 
+// MOVIES ROUTES
+router
+  .get('/movies', movies.index)
+  .get('/movies/:id', movies.show)
+  .post('/movies', movies.create)
+  .put('/movies/:id', movies.update)
+  .delete('/movies/:id', movies.destroy);
 
 
 

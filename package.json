@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server",
     "dev": "nodemon server",
-    "bootstrap": "knex migrate:latest && knex seed:run"
+    "bootstrap": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "engines": {
     "node": "6.7.0"
