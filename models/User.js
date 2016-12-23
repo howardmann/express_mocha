@@ -1,5 +1,6 @@
 var Model = require('objection').Model;
 var Post = require('./Post');
+var Movie = require('./Movie');
 
 // Extends Model constructor to User.
 function User() {
@@ -25,4 +26,12 @@ User.relationMappings = {
       to: 'posts.user_id'
     }
   },
+  movies: {
+    relation: Model.HasManyRelation,
+    modelClass: Movie,
+    join: {
+      from: 'users.id',
+      to: 'movies.user_id'
+    }
+  }
 };

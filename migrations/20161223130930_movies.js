@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('director');
     table.integer('year');
     table.string('genre');
+    table.integer('user_id').unsigned().references('users.id').onDelete('set null');    
     table.timestamp('created_at').notNullable().defaultTo(knex.raw('now()'));
     table.timestamp('updated_at').notNullable().defaultTo(knex.raw('now()'));
   });

@@ -61,6 +61,13 @@ describe('Movies', function() {
         expect(res.body.genre).to.equal('Drama');
         expect(res.body).to.have.property('year');
         expect(res.body.year).to.equal(2013);
+        // Add associations for movie belongs to user
+        expect(res.body).to.have.property('user');
+        expect(res.body.user).to.be.a('object');
+        expect(res.body.user).to.have.property('name');
+        expect(res.body.user.name).to.equal('howie mann');
+        expect(res.body.user).to.have.property('email');
+        expect(res.body.user.email).to.equal('howie@email.com');
         done();
       });
   });

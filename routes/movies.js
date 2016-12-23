@@ -1,4 +1,5 @@
 var Movie = require('../models/Movie');
+var _ = require('underscore');
 
 exports.index = function(req, res, next) {
   Movie
@@ -12,7 +13,10 @@ exports.show = function(req, res, next) {
   Movie
     .query()
     .findById(req.params.id)
+    .eager('user')
     .then(function(movie){
+      var newUser = _.pick(movie.user, 'name', 'email');
+      movie.user = newUser;
       res.json(movie);
     }, next)
 };
@@ -31,6 +35,7 @@ exports.update = function(req, res, next) {
     .query()
     .updateAndFetchById(req.params.id, req.body)
     .then(function(movie){
+
       res.json(movie);
     }, next)
 };

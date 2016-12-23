@@ -22,7 +22,8 @@
     "node-sass-middleware": "0.9.8",
     "objection": "^0.6.2",
     "pg": "^6.1.2",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",

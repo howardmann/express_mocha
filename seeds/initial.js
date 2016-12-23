@@ -30,22 +30,26 @@ exports.seed = function(knex, Promise) {
 
   // Seed movies
   var movies = [
-    {name: 'Gladiator', director: 'Ridley Scott', genre: 'Drama', year: 2000},
-    {name: 'Prestige', director: 'Christopher Nolan', genre: 'Drama', year: 2013},
-    {name: 'Jurassic Park', director: 'Steven Spielberg', genre: 'Action', year: 1995},
-    {name: 'Pulp Fiction', director: 'Quentin Tarantino', genre: 'Noir', year: 1990}
+    {name: 'Gladiator', director: 'Ridley Scott', genre: 'Drama', year: 2000, user_id: knex('users').where({email: 'john@email.com'}).select('id')},
+    {name: 'Prestige', director: 'Christopher Nolan', genre: 'Drama', year: 2013, user_id: knex('users').where({email: 'howie@email.com'}).select('id')},
+    {name: 'Jurassic Park', director: 'Steven Spielberg', genre: 'Action', year: 1995, user_id: knex('users').where({email: 'howie@email.com'}).select('id')},
+    {name: 'Pulp Fiction', director: 'Quentin Tarantino', genre: 'Noir', year: 1990, user_id: knex('users').where({email: 'howie@email.com'}).select('id')}
   ];
 
   return knex('posts').del()
     .then(function(){
-      return knex('users').del()
-    }).then(function(){
-      return knex('users').insert(users, 'id')
-    }).then(function(){
-      return knex('posts').insert(posts, 'id');
-    }).then(function(){
       return knex('movies').del();
-    }).then(function(){
+    })
+    .then(function(){
+      return knex('users').del();
+    })
+    .then(function(){
+      return knex('users').insert(users, 'id');
+    })
+    .then(function(){
+      return knex('posts').insert(posts, 'id');
+    })
+    .then(function(){
       return knex('movies').insert(movies, 'id');
     })
 
