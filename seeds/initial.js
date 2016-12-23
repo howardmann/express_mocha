@@ -28,6 +28,14 @@ exports.seed = function(knex, Promise) {
 
   ];
 
+  // Seed movies
+  var movies = [
+    {name: 'Gladiator', director: 'Ridley Scott', genre, 'Drama', year: 2000},
+    {name: 'Prestige', director: 'Christopher Nolan', genre, 'Drama', year: 2013},
+    {name: 'Jurassic Park', director: 'Steven Spielberg', genre, 'Action', year: 1995},
+    {name: 'Pulp Fiction', director: 'Quentin Tarantino', genre, 'Noir', year: 1990}
+  ];
+
   return knex('posts').del()
     .then(function(){
       return knex('users').del()
@@ -35,6 +43,8 @@ exports.seed = function(knex, Promise) {
       return knex('users').insert(users, 'id')
     }).then(function(){
       return knex('posts').insert(posts, 'id');
+    }).then(function(){
+      return knex('movies').insert(movies, 'id');
     })
 
 };

@@ -9,7 +9,7 @@
   },
   "engines": {
     "node": "6.7.0"
-  },  
+  },
   "dependencies": {
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
@@ -23,5 +23,9 @@
     "objection": "^0.6.2",
     "pg": "^6.1.2",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0"
   }
 }
