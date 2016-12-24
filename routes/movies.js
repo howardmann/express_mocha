@@ -5,6 +5,7 @@ exports.index = function(req, res, next) {
   Movie
     .query()
     .then(function(movies){
+
       res.json(movies);
     }, next)
 };

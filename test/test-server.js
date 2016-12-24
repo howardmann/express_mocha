@@ -41,6 +41,8 @@ describe('Movies', function() {
         res.body[0].genre.should.equal('Drama');
         res.body[0].should.have.property('year');
         res.body[0].year.should.equal(2000);
+        res.body[0].should.have.property('period');
+        res.body[0].period.should.equal('post millennium');
         done();
       });
   });
